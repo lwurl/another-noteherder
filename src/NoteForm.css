@@ -1,0 +1,17 @@
+.NoteForm input[name=title] {
+    border: none;
+    font-size: 200%;
+    font-family: Fauna One;
+    color: #008bf8;
+    font-weight: 400;
+    width: 100%;
+    outline: none;
+}
+
+.NoteForm button[type=submit] {
+    background-color: #008bf8;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 1.4rem;
+    padding: 1rem;
+}
