@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
 
-import Sidebar from './Sidebar';
-import NoteList from './NoteList';
-import NoteForm from './NoteForm';
+import "./App.css"
+import Main from './Main';
 
 
 class App extends Component {
   render() {
     return (
       <div className="Main">
-        <Sidebar />
-        <NoteList />
-        <NoteForm />
+        <Main />
       </div>
     );
   }
