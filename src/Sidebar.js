@@ -45,8 +45,6 @@ const setButtonHovered = value => {
     }
 }
 
-
-// Put hover stuff
 const styles = {
     sidebar: {
         width: '6rem',
