@@ -16,6 +16,10 @@ class Main extends React.Component {
                 {
                     title: 'Note 2',
                     body: 'Body of the second note',
+                },
+                {
+                    title: 'Title of a note',
+                    body: 'This is the body of the note',
                 }
             ]
         }
