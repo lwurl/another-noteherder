@@ -5,11 +5,11 @@ class NoteListItem extends React.Component {
         return (
             <a>
                 <li>
-                    <div class="note">
-                    <div class="note-title">
+                    <div className="note">
+                    <div className="note-title">
                         {this.props.title}
                     </div>
-                    <div class="note-body">
+                    <div className="note-body">
                         <p>
                         {this.props.body}
                         </p>
