@@ -9,7 +9,7 @@ class NoteList extends React.Component {
             <div className="NoteList">
             <h3>Notes</h3>
             <ul id="notes">
-                {this.props.listOfNotes.map((info) => <NoteListItem title={info.title} body={info.body}/>)}
+                {this.props.listOfNotes.map((info) => <NoteListItem title={info.title} body={info.body} key={info.id}/>)}
             </ul>
             </div>
         );

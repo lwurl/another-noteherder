@@ -10,14 +10,17 @@ class Main extends React.Component {
         this.state = {
             list: [
                 {
+                    id: 1,
                     title: 'Note 1',
                     body: 'Body of the 1st note',
                 },
                 {
+                    id: 2,
                     title: 'Note 2',
                     body: 'Body of the second note',
                 },
                 {
+                    id: 3,
                     title: 'Title of a note',
                     body: 'This is the body of the note',
                 }
