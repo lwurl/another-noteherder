@@ -33,8 +33,7 @@ const styles = {
     formActions: {
         paddingTop: '1rem',
         marginLeft: '-2rem',
-        display: '-ms-flexbox',
-        display: 'flex',
+        display: '-ms-flexbox flex',
         msFlexLinePack: 'center',
         alignContent: 'center',
     },
