@@ -35,6 +35,10 @@ class Sidebar extends React.Component {
                 style={styles.newNote}
                 onMouseEnter={() => this.handleMouseEnter()}
                 onMouseLeave={() => this.handleMouseLeave()}
+                onClick={(ev) => {
+                    ev.preventDefault();
+                    this.props.resetCurrentNote();
+                }}
             >
                 <img src={newHover} alt="New note" style={styles.aImg}/>
                 <img
