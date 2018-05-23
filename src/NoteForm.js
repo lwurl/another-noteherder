@@ -3,10 +3,10 @@ import './NoteForm.css';
 
 const NoteForm = () => {
     return (
-        <div class="NoteForm" style={styles.noteForm}>
-          <div class="form-actions" style={styles.formActions}>
+        <div className="NoteForm" style={styles.noteForm}>
+          <div className="form-actions" style={styles.formActions}>
             <button type="button" style={styles.button}>
-              <i class="fa fa-trash-o" style={styles.iButton}></i>
+              <i className="fa fa-trash-o" style={styles.iButton}></i>
             </button>
           </div>
           <form style={styles.form}>
