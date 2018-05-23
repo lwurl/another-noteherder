@@ -1,7 +1,7 @@
 import React from 'react';
 import './NoteForm.css';
 
-const NoteForm = () => {
+const NoteForm = (props) => {
     return (
         <div className="NoteForm" style={styles.noteForm}>
           <div className="form-actions" style={styles.formActions}>
@@ -15,10 +15,15 @@ const NoteForm = () => {
                 type="text"
                 name="title"
                 placeholder="Title your note"
+                value={props.currentNote.title}
               />
             </p>
             
-            <textarea name="body" style={styles.textArea}></textarea>
+            <textarea 
+                name="body" 
+                style={styles.textArea}
+                value={props.currentNote.body}
+            ></textarea>
           </form>
         </div>
     );
