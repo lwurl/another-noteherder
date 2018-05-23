@@ -1,42 +1,34 @@
 import React from 'react';
-import './NoteList.css'
+import NoteListItem from './NoteListItem';
+import './NoteList.css';
 
-const NoteList = () => {
-    return (
-        <div class="NoteList">
-          <h3>Notes</h3>
-          <ul id="notes">
-            <a class="active">
-              <li>
-                <div class="note">
-                  <div class="note-title">
-                    Kohlrabi welsh
-                  </div>
-                  <div class="note-body">
-                    <p>
-                      Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion daikon amaranth tatsoi tomatillo melon azuki bean garlic.
-                    </p>
-                  </div>
-                </div>
-              </li>
-            </a>
-            <a>
-              <li>
-                <div class="note">
-                  <div class="note-title">
-                    Dandelion cucumber
-                  </div>
-                  <div class="note-body">
-                    <p>
-                      Gumbo beet greens corn soko endive gumbo gourd. Parsley shallot courgette tatsoi pea sprouts fava bean collard greens dandelion okra wakame tomato. Dandelion cucumber earthnut pea peanut soko zucchini.
-                    </p>
-                  </div>
-                </div>
-              </li>
-            </a>
-          </ul>
-        </div>
-    );
+class NoteList extends React.Component {
+    constructor(){
+        super()
+        this.state = {
+            list: [
+                {
+                    title: 'Note 1',
+                    body: 'Body of the 1st note',
+                },
+                {
+                    title: 'Note 2',
+                    body: 'Body of the second note',
+                }
+            ]
+        }
+    }
+
+    render() {
+        return (
+            <div class="NoteList">
+            <h3>Notes</h3>
+            <ul id="notes">
+                {this.state.list.map((info) => <NoteListItem title={info.title} body={info.body}/>)}
+            </ul>
+            </div>
+        );
+    }
 }
 
 export default NoteList;
