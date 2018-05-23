@@ -4,14 +4,16 @@ class NoteListItem extends React.Component {
     render() {
         return (
             <a>
-                <li>
+                <li
+                    onClick={() => this.props.setCurrentNote(this.props.note)}
+                >
                     <div className="note">
                     <div className="note-title">
-                        {this.props.title}
+                        {this.props.note.title}
                     </div>
                     <div className="note-body">
                         <p>
-                        {this.props.body}
+                        {this.props.note.body}
                         </p>
                     </div>
                     </div>
