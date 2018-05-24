@@ -4,9 +4,9 @@ import Sidebar from './Sidebar';
 import NoteList from './NoteList';
 import NoteForm from './NoteForm';
 
-var Rebase = require('re-base');
-var firebase = require('firebase');
-var app = firebase.initializeApp({
+const Rebase = require('re-base');
+const firebase = require('firebase');
+const app = firebase.initializeApp({
     apiKey: "AIzaSyD_BywNFF9Q3FbPxlKk2WL-ekwpTt523SI",
     authDomain: "noteherder-94eed.firebaseapp.com",
     databaseURL: "https://noteherder-94eed.firebaseio.com",
@@ -14,7 +14,7 @@ var app = firebase.initializeApp({
     storageBucket: "noteherder-94eed.appspot.com",
     messagingSenderId: "366965344746"
 });
-var base = Rebase.createClass(app.database());
+const base = Rebase.createClass(app.database());
 
 class Main extends React.Component {
     constructor(){
