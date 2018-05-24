@@ -51,7 +51,7 @@ class Sidebar extends React.Component {
                 />
             </a>
             <div className="SignOut" style={styles.signOut}>
-                <button style={styles.button}>
+                <button style={styles.button} onClick={this.props.signOut}>
                 <i className="fa fa-sign-out"></i>
                 </button>
             </div>
