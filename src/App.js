@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import "./App.css"
 import Main from './Main';
 import SignIn from './SignIn';
+import { auth } from './base';
 
 
 class App extends Component {
@@ -10,12 +11,28 @@ class App extends Component {
     uid: null,
   }
 
+  componentWillMount() {
+    auth.onAuthStateChanged(
+      (user) => {
+        if (user) {
+          this.handleAuth();
+        } else {
+          this.handleUnauth();
+        }
+      }
+    )
+  }
+
+  handleUnauth = () => {
+    this.setState({ uid: null });
+  }
+
   handleAuth = () => {
     this.setState({ uid: 'lwurl' });
   }
 
   signOut = () => {
-    this.setState({ uid: null })
+    auth.signOut();
   }
 
   signedIn = () => {
@@ -28,7 +45,7 @@ class App extends Component {
         { 
             this.signedIn()
             ? <Main signOut={this.signOut}/> 
-            : <SignIn handleAuth={this.handleAuth} />
+            : <SignIn />
         }
       </div>
     );

@@ -3,18 +3,7 @@ import React from 'react';
 import Sidebar from './Sidebar';
 import NoteList from './NoteList';
 import NoteForm from './NoteForm';
-
-const Rebase = require('re-base');
-const firebase = require('firebase');
-const app = firebase.initializeApp({
-    apiKey: "AIzaSyD_BywNFF9Q3FbPxlKk2WL-ekwpTt523SI",
-    authDomain: "noteherder-94eed.firebaseapp.com",
-    databaseURL: "https://noteherder-94eed.firebaseio.com",
-    projectId: "noteherder-94eed",
-    storageBucket: "noteherder-94eed.appspot.com",
-    messagingSenderId: "366965344746"
-});
-const base = Rebase.createClass(app.database());
+import base from './base';
 
 class Main extends React.Component {
     constructor(){
