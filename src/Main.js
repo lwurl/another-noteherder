@@ -4,6 +4,13 @@ import Sidebar from './Sidebar';
 import NoteList from './NoteList';
 import NoteForm from './NoteForm';
 
+var Rebase = require('re-base');
+var firebase = require('firebase');
+var app = firebase.initializeApp({
+    // Info goes here
+});
+var base = Rebase.createClass(app.database());
+
 class Main extends React.Component {
     constructor(){
         super()
@@ -30,12 +37,17 @@ class Main extends React.Component {
     }
 
     componentDidMount () {
-        if (localStorage.hasOwnProperty('list')){
-            this.setState({ list: JSON.parse(localStorage.getItem('list'))})
-        }
-        else {
-            localStorage.setItem('list', JSON.stringify(this.state.list));
-        }
+        // if (localStorage.hasOwnProperty('list')){
+        //     this.setState({ list: JSON.parse(localStorage.getItem('list'))})
+        // }
+        // else {
+        //     localStorage.setItem('list', JSON.stringify(this.state.list));
+        // }
+        base.syncState(`notesList`, {
+            context: this,
+            state: 'list',
+            asArray: true
+          });
     }
 
     blankNote = () => {
