@@ -7,7 +7,12 @@ import NoteForm from './NoteForm';
 var Rebase = require('re-base');
 var firebase = require('firebase');
 var app = firebase.initializeApp({
-    // Info goes here
+    apiKey: "AIzaSyD_BywNFF9Q3FbPxlKk2WL-ekwpTt523SI",
+    authDomain: "noteherder-94eed.firebaseapp.com",
+    databaseURL: "https://noteherder-94eed.firebaseio.com",
+    projectId: "noteherder-94eed",
+    storageBucket: "noteherder-94eed.appspot.com",
+    messagingSenderId: "366965344746"
 });
 var base = Rebase.createClass(app.database());
 
