@@ -3,36 +3,44 @@ import './NoteForm.css';
 
 const NoteForm = (props) => {
     const handleChanges = (ev) => {
-        const note = {...props.currentNote};
+        const note = { ...props.currentNote };
         note[ev.target.name] = ev.target.value;
         props.saveNote(note)
     }
 
+    const deleteNote = () => {
+        props.deleteNote(props.currentNote);
+    }
+
     return (
         <div className="NoteForm" style={styles.noteForm}>
-          <div className="form-actions" style={styles.formActions}>
-            <button type="button" style={styles.button}>
-              <i className="fa fa-trash-o" style={styles.iButton}></i>
-            </button>
-          </div>
-          <form style={styles.form}>
-            <p>
-              <input
-                type="text"
-                name="title"
-                placeholder="Title your note"
-                value={props.currentNote.title}
-                onChange={handleChanges}
-              />
-            </p>
-            
-            <textarea 
-                name="body" 
-                style={styles.textArea}
-                value={props.currentNote.body}
-                onChange={handleChanges}
-            ></textarea>
-          </form>
+            <div className="form-actions" style={styles.formActions}>
+                <button type="button" style={styles.button}>
+                    <i
+                        className="fa fa-trash-o"
+                        style={styles.iButton}
+                        onClick={deleteNote}
+                    ></i>
+                </button>
+            </div>
+            <form style={styles.form}>
+                <p>
+                    <input
+                        type="text"
+                        name="title"
+                        placeholder="Title your note"
+                        value={props.currentNote.title}
+                        onChange={handleChanges}
+                    />
+                </p>
+
+                <textarea
+                    name="body"
+                    style={styles.textArea}
+                    value={props.currentNote.body}
+                    onChange={handleChanges}
+                ></textarea>
+            </form>
         </div>
     );
 }

@@ -48,7 +48,6 @@ class Main extends React.Component {
     }
 
     saveNote = (note) => {
-        //debugger
         const notes = [...this.state.list];
 
         if (!note.id){
@@ -60,10 +59,19 @@ class Main extends React.Component {
             // note already exists
             const index = notes.findIndex(currentNote => currentNote.id === note.id);
             notes[index] = note;
-            //debugger
         }
         this.setState({ list: notes });
         this.setCurrentNote(note);
+    }
+
+    deleteNote = (note) => {
+        const notes = [...this.state.list];
+
+        const index = notes.findIndex(currentNote => currentNote.id === note.id);
+        if (index > -1)
+            notes.splice(index, 1);
+        this.setState({ list: notes });
+        this.resetCurrentNote();
     }
     
     render() {
@@ -72,9 +80,18 @@ class Main extends React.Component {
                 className="Main"
                 style={style}
             >
-                <Sidebar resetCurrentNote={this.resetCurrentNote}/>
-                <NoteList setCurrentNote={this.setCurrentNote} listOfNotes={this.state.list}/>
-                <NoteForm currentNote={this.state.currentNote} saveNote={this.saveNote}/>
+                <Sidebar 
+                    resetCurrentNote={this.resetCurrentNote}
+                />
+                <NoteList 
+                    setCurrentNote={this.setCurrentNote} 
+                    listOfNotes={this.state.list}
+                />
+                <NoteForm 
+                    currentNote={this.state.currentNote} 
+                    saveNote={this.saveNote}
+                    deleteNote={this.deleteNote}
+                />
             </div>
         );
     }
