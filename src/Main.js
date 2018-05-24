@@ -29,6 +29,15 @@ class Main extends React.Component {
         }
     }
 
+    componentDidMount () {
+        if (localStorage.hasOwnProperty('list')){
+            this.setState({ list: JSON.parse(localStorage.getItem('list'))})
+        }
+        else {
+            localStorage.setItem('list', JSON.stringify(this.state.list));
+        }
+    }
+
     blankNote = () => {
         return (
             {
@@ -61,6 +70,7 @@ class Main extends React.Component {
             notes[index] = note;
         }
         this.setState({ list: notes });
+        localStorage.setItem('list', JSON.stringify(notes));
         this.setCurrentNote(note);
     }
 
@@ -71,6 +81,7 @@ class Main extends React.Component {
         if (index > -1)
             notes.splice(index, 1);
         this.setState({ list: notes });
+        localStorage.setItem('list', JSON.stringify(notes));
         this.resetCurrentNote();
     }
     
