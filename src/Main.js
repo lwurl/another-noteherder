@@ -4,6 +4,7 @@ import Sidebar from './Sidebar';
 import NoteList from './NoteList';
 import NoteForm from './NoteForm';
 import base from './base';
+import firebase from 'firebase/app';
 
 class Main extends React.Component {
     constructor(){
@@ -31,7 +32,8 @@ class Main extends React.Component {
     }
 
     componentDidMount () {
-        base.syncState(`notesList`, {
+        const user = firebase.auth().currentUser;
+        base.syncState(user.uid, {
             context: this,
             state: 'list',
             asArray: true
