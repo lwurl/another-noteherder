@@ -32,8 +32,7 @@ class Main extends React.Component {
     }
 
     componentDidMount () {
-        const user = firebase.auth().currentUser;
-        base.syncState(user.uid, {
+        base.syncState(this.props.uid, {
             context: this,
             state: 'list',
             asArray: true
