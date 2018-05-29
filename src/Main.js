@@ -4,7 +4,6 @@ import Sidebar from './Sidebar';
 import NoteList from './NoteList';
 import NoteForm from './NoteForm';
 import base from './base';
-import firebase from 'firebase/app';
 
 class Main extends React.Component {
     constructor(){
