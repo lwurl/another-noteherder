@@ -82,22 +82,23 @@ class Main extends React.Component {
         )
       }
 
-    deleteNote = (note) => {
-        const notes = [...this.state.list];
-
-        const index = notes.findIndex(currentNote => currentNote.id === note.id);
-        if (index > -1)
-            notes.splice(index, 1);
-        this.setState({ list: notes });
-        this.resetCurrentNote();
-    }
+      removeNote = (currentNote) => {
+        const notes = [...this.state.list]
+        const i = notes.findIndex(note => note.id === currentNote.id)
+    
+        if (i > -1) {
+          notes.splice(i, 1)
+          this.setState({ list: notes })
+          this.props.history.push('/notes')
+        }
+      }
 
     render() {
         const formProps = {
             //currentNote: this.state.currentNote,
             notes: this.state.list,
             saveNote: this.saveNote,
-            removeCurrentNote: this.removeCurrentNote,
+            removeNote: this.removeNote,
         }
         return (
             <div
