@@ -1,4 +1,5 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 
 import Sidebar from './Sidebar';
 import NoteList from './NoteList';
@@ -6,7 +7,7 @@ import NoteForm from './NoteForm';
 import base from './base';
 
 class Main extends React.Component {
-    constructor(){
+    constructor() {
         super()
         this.state = {
             currentNote: this.blankNote(),
@@ -30,12 +31,12 @@ class Main extends React.Component {
         }
     }
 
-    componentDidMount () {
+    componentDidMount() {
         base.syncState(`notes/${this.props.uid}`, {
             context: this,
             state: 'list',
             asArray: true
-          });
+        });
     }
 
     blankNote = () => {
@@ -59,12 +60,12 @@ class Main extends React.Component {
     saveNote = (note) => {
         const notes = [...this.state.list];
 
-        if (!note.id){
+        if (!note.id) {
             // new note
             note.id = Date.now();
             notes.push(note)
         }
-        else{
+        else {
             // note already exists
             const index = notes.findIndex(currentNote => currentNote.id === note.id);
             notes[index] = note;
@@ -82,26 +83,45 @@ class Main extends React.Component {
         this.setState({ list: notes });
         this.resetCurrentNote();
     }
-    
+
     render() {
+        const formProps = {
+            currentNote: this.state.currentNote,
+            saveNote: this.saveNote,
+            removeCurrentNote: this.removeCurrentNote,
+        }
         return (
-            <div 
+            <div
                 className="Main"
                 style={style}
             >
-                <Sidebar 
+                <Sidebar
                     resetCurrentNote={this.resetCurrentNote}
                     signOut={this.props.signOut}
                 />
-                <NoteList 
-                    setCurrentNote={this.setCurrentNote} 
+                <NoteList
+                    setCurrentNote={this.setCurrentNote}
                     listOfNotes={this.state.list}
                 />
-                <NoteForm 
-                    currentNote={this.state.currentNote} 
-                    saveNote={this.saveNote}
-                    deleteNote={this.deleteNote}
-                />
+                <Switch>
+                    <Route
+                        path="/notes/:id"
+                        render={navProps => (
+                            <NoteForm
+                                {...formProps}
+                                {...navProps}
+                            />
+                        )}
+                    />
+                    <Route
+                        render={navProps => (
+                            <NoteForm
+                                {...formProps}
+                                {...navProps}
+                            />
+                        )}
+                    />
+                </Switch>
             </div>
         );
     }
