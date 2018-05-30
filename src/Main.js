@@ -58,21 +58,29 @@ class Main extends React.Component {
     }
 
     saveNote = (note) => {
-        const notes = [...this.state.list];
-
-        if (!note.id) {
-            // new note
-            note.id = Date.now();
-            notes.push(note)
+        let shouldRedirect = false
+        const notes = [...this.state.list]
+    
+        if (note.id) {
+          // existing note
+          const i = notes.findIndex(currentNote => currentNote.id === note.id)
+          notes[i] = note
+        } else {
+          // new note
+          note.id = Date.now()
+          notes.push(note)
+          shouldRedirect = true
         }
-        else {
-            // note already exists
-            const index = notes.findIndex(currentNote => currentNote.id === note.id);
-            notes[index] = note;
-        }
-        this.setState({ list: notes });
-        this.setCurrentNote(note);
-    }
+    
+        this.setState(
+          { list: notes },
+          () => {
+            if (shouldRedirect) {
+              this.props.history.push(`/notes/${note.id}`)
+            }
+          }
+        )
+      }
 
     deleteNote = (note) => {
         const notes = [...this.state.list];
