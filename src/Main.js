@@ -10,7 +10,6 @@ class Main extends React.Component {
     constructor() {
         super()
         this.state = {
-            currentNote: this.blankNote(),
             list: [
                 {
                     id: 1,
@@ -37,24 +36,6 @@ class Main extends React.Component {
             state: 'list',
             asArray: true
         });
-    }
-
-    blankNote = () => {
-        return (
-            {
-                id: null,
-                title: '',
-                body: '',
-            }
-        );
-    }
-
-    setCurrentNote = (note) => {
-        this.setState({ currentNote: note });
-    }
-
-    resetCurrentNote = () => {
-        this.setCurrentNote(this.blankNote());
     }
 
     saveNote = (note) => {
