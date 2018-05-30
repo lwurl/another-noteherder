@@ -8,73 +8,73 @@ import { auth } from './base';
 
 
 class App extends Component {
-  state = {
-    uid: null,
-  }
+    state = {
+        uid: null,
+    }
 
-  componentWillMount() {
-    auth.onAuthStateChanged(
-      (user) => {
-        if (user) {
-          this.handleAuth(user);
-        } else {
-          this.handleUnauth();
-        }
-      }
-    )
-  }
+    componentWillMount() {
+        auth.onAuthStateChanged(
+            (user) => {
+                if (user) {
+                    this.handleAuth(user);
+                } else {
+                    this.handleUnauth();
+                }
+            }
+        )
+    }
 
-  handleUnauth = () => {
-    this.setState({ uid: null });
-  }
+    handleUnauth = () => {
+        this.setState({ uid: null });
+    }
 
-  handleAuth = (user) => {
-    this.setState({ uid: user.uid });
-  }
+    handleAuth = (user) => {
+        this.setState({ uid: user.uid });
+    }
 
-  signOut = () => {
-    auth.signOut();
-  }
+    signOut = () => {
+        auth.signOut();
+    }
 
-  signedIn = () => {
-    return this.state.uid;
-  }
-  
-  render() {
-    return (
-      <div className="App">
-        <Switch>
-          <Route
-            path="/sign-in"
-            render={() => (
-              this.signedIn()
-                ? <Redirect to="/notes" />
-                : <SignIn />
-            )}
-          />
-          <Route
-            path="/notes"
-            render={() => (
-              this.signedIn()
-                ? <Main signOut={this.signOut} uid={this.state.uid} />
-                : <Redirect to="/sign-in" />
-            )}
-          />
-          <Route render={() => (
-            this.signedIn()
-              ? <Redirect to="/notes" />
-              : <Redirect to="/signed-in" />
-            )} 
-          />
-        </Switch>
-        { 
-            // this.signedIn()
-            // ? <Main signOut={this.signOut} uid={this.state.uid}/> 
-            // : <SignIn />
-        }
-      </div>
-    );
-  }
+    signedIn = () => {
+        return this.state.uid;
+    }
+
+    render() {
+        return (
+            <div className="App">
+                <Switch>
+                    <Route
+                        path="/sign-in"
+                        render={() => (
+                            this.signedIn()
+                                ? <Redirect to="/notes" />
+                                : <SignIn />
+                        )}
+                    />
+                    <Route
+                        path="/notes"
+                        render={() => (
+                            this.signedIn()
+                                ? <Main signOut={this.signOut} uid={this.state.uid} />
+                                : <Redirect to="/sign-in" />
+                        )}
+                    />
+                    <Route render={() => (
+                        this.signedIn()
+                            ? <Redirect to="/notes" />
+                            : <Redirect to="/signed-in" />
+                    )}
+                    />
+                </Switch>
+                {
+                    // this.signedIn()
+                    // ? <Main signOut={this.signOut} uid={this.state.uid}/> 
+                    // : <SignIn />
+                }
+            </div>
+        );
+    }
 }
 
 export default App;
