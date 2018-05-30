@@ -18,6 +18,18 @@ class NoteForm extends Component {
     }
   }
 
+  componentWillReceiveProps = (newProps) => {
+    // Get the ID from the URL
+    const newId = newProps.match.params.id || ''
+
+    // Find the note with that ID
+    const i = newProps.notes.findIndex(currentNote => currentNote.id.toString() === newId.toString())
+    const note = newProps.notes[i] || this.blankNote()
+
+    // Update state with that note
+      this.setState({ note })
+  }
+
   handleChanges = (ev) => {
     const note = {...this.state.note}
     note[ev.target.name] = ev.target.value
