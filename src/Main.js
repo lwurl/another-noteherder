@@ -99,10 +99,7 @@ class Main extends React.Component {
                     resetCurrentNote={this.resetCurrentNote}
                     signOut={this.props.signOut}
                 />
-                <NoteList
-                    setCurrentNote={this.setCurrentNote}
-                    listOfNotes={this.state.list}
-                />
+                <NoteList notes={this.state.list} />
                 <Switch>
                     <Route
                         path="/notes/:id"

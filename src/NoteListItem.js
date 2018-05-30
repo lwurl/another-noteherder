@@ -1,26 +1,23 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
-class NoteListItem extends React.Component {
-    render() {
-        return (
-            <a>
-                <li
-                    onClick={() => this.props.setCurrentNote(this.props.note)}
-                >
-                    <div className="note">
+const NoteListItem = ({ note }) => {
+    return (
+        <NavLink to={`/notes/${note.id}`}>
+            <li className="NoteListItem">
+                <div className="note">
                     <div className="note-title">
-                        {this.props.note.title}
+                        {note.title}
                     </div>
                     <div className="note-body">
                         <p>
-                        {this.props.note.body}
+                            {note.body}
                         </p>
                     </div>
-                    </div>
-                </li>
-            </a>
-        );
-    }
+                </div>
+            </li>
+        </NavLink>
+    );
 }
 
 export default NoteListItem;
