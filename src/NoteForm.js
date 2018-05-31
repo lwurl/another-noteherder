@@ -15,6 +15,7 @@ class NoteForm extends Component {
       id: null,
       title: '',
       body: '',
+      modified: null,
     }
   }
 

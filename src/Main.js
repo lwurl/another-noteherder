@@ -6,6 +6,14 @@ import NoteList from './NoteList';
 import NoteForm from './NoteForm';
 import base from './base';
 
+function compare(a, b){
+    if (a.modified < b.modified)
+        return 1;
+    if (a.modified > b.modified)
+        return -1;
+    return 0;
+}
+
 class Main extends React.Component {
     constructor() {
         super()
@@ -52,7 +60,9 @@ class Main extends React.Component {
           notes.push(note)
           shouldRedirect = true
         }
+        note.modified = Date.now()
     
+        notes.sort(compare)
         this.setState(
           { list: notes },
           () => {
