@@ -41,7 +41,7 @@ const Sidebar = ({ signOut }) => {
           onClick={signOut}
         >
           <i
-            className={`fas fa-sign-out-alt ${css(styles.buttonIcon)}`}
+            className={`fa fa-sign-out ${css(styles.buttonIcon)}`}
             title="sign out"
           ></i>
         </button>
