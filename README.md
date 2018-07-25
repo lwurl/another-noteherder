@@ -1,3 +1,1 @@
-I had some issues when I tried to integrate Firebase into the project, and nothing would compile or run.
-From then I got into some issues with git so I made a new repository, and now I will be using another-noteherder.
-- Luke Wurl
+An application to jot down notes and reminders similar to Notes on the iPhone. Notes are unique to each user and stored using a Firebase database.
